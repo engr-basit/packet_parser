@@ -1,9 +1,9 @@
 AUTOMAKE_OPTIONS = subdir-objects
 
-bin_PROGRAMS = snmp_wrapper
+bin_PROGRAMS = packet_parser
 
-snmp_wrapper_SOURCES = \
+packet_parser_SOURCES = \
     src/main.c
 
-snmp_wrapper_CPPFLAGS = -I/usr/local/include
-snmp_wrapper_LDFLAGS  = -lnetsnmp
+packet_parser_CPPFLAGS = -I/usr/local/include
+packet_parser_LDFLAGS  = -lm

@@ -86,7 +86,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-bin_PROGRAMS = snmp_wrapper$(EXEEXT)
+bin_PROGRAMS = packet_parser$(EXEEXT)
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
@@ -103,11 +103,11 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
-am_snmp_wrapper_OBJECTS = src/snmp_wrapper-main.$(OBJEXT)
-snmp_wrapper_OBJECTS = $(am_snmp_wrapper_OBJECTS)
-snmp_wrapper_LDADD = $(LDADD)
-snmp_wrapper_LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(snmp_wrapper_LDFLAGS) $(LDFLAGS) -o $@
+am_packet_parser_OBJECTS = src/packet_parser-main.$(OBJEXT)
+packet_parser_OBJECTS = $(am_packet_parser_OBJECTS)
+packet_parser_LDADD = $(LDADD)
+packet_parser_LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(packet_parser_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -123,7 +123,7 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = src/$(DEPDIR)/snmp_wrapper-main.Po
+am__depfiles_remade = src/$(DEPDIR)/packet_parser-main.Po
 am__mv = mv -f
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -141,8 +141,8 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(snmp_wrapper_SOURCES)
-DIST_SOURCES = $(snmp_wrapper_SOURCES)
+SOURCES = $(packet_parser_SOURCES)
+DIST_SOURCES = $(packet_parser_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -274,11 +274,11 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = subdir-objects
-snmp_wrapper_SOURCES = \
+packet_parser_SOURCES = \
     src/main.c
 
-snmp_wrapper_CPPFLAGS = -I/usr/local/include
-snmp_wrapper_LDFLAGS = -lnetsnmp
+packet_parser_CPPFLAGS = -I/usr/local/include
+packet_parser_LDFLAGS = -lm
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
@@ -380,12 +380,12 @@ src/$(am__dirstamp):
 src/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/$(DEPDIR)
 	@: > src/$(DEPDIR)/$(am__dirstamp)
-src/snmp_wrapper-main.$(OBJEXT): src/$(am__dirstamp) \
+src/packet_parser-main.$(OBJEXT): src/$(am__dirstamp) \
 	src/$(DEPDIR)/$(am__dirstamp)
 
-snmp_wrapper$(EXEEXT): $(snmp_wrapper_OBJECTS) $(snmp_wrapper_DEPENDENCIES) $(EXTRA_snmp_wrapper_DEPENDENCIES) 
-	@rm -f snmp_wrapper$(EXEEXT)
-	$(AM_V_CCLD)$(snmp_wrapper_LINK) $(snmp_wrapper_OBJECTS) $(snmp_wrapper_LDADD) $(LIBS)
+packet_parser$(EXEEXT): $(packet_parser_OBJECTS) $(packet_parser_DEPENDENCIES) $(EXTRA_packet_parser_DEPENDENCIES) 
+	@rm -f packet_parser$(EXEEXT)
+	$(AM_V_CCLD)$(packet_parser_LINK) $(packet_parser_OBJECTS) $(packet_parser_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -394,7 +394,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/snmp_wrapper-main.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/packet_parser-main.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -418,19 +418,19 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
-src/snmp_wrapper-main.o: src/main.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(snmp_wrapper_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/snmp_wrapper-main.o -MD -MP -MF src/$(DEPDIR)/snmp_wrapper-main.Tpo -c -o src/snmp_wrapper-main.o `test -f 'src/main.c' || echo '$(srcdir)/'`src/main.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/snmp_wrapper-main.Tpo src/$(DEPDIR)/snmp_wrapper-main.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/main.c' object='src/snmp_wrapper-main.o' libtool=no @AMDEPBACKSLASH@
+src/packet_parser-main.o: src/main.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(packet_parser_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/packet_parser-main.o -MD -MP -MF src/$(DEPDIR)/packet_parser-main.Tpo -c -o src/packet_parser-main.o `test -f 'src/main.c' || echo '$(srcdir)/'`src/main.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/packet_parser-main.Tpo src/$(DEPDIR)/packet_parser-main.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/main.c' object='src/packet_parser-main.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(snmp_wrapper_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/snmp_wrapper-main.o `test -f 'src/main.c' || echo '$(srcdir)/'`src/main.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(packet_parser_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/packet_parser-main.o `test -f 'src/main.c' || echo '$(srcdir)/'`src/main.c
 
-src/snmp_wrapper-main.obj: src/main.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(snmp_wrapper_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/snmp_wrapper-main.obj -MD -MP -MF src/$(DEPDIR)/snmp_wrapper-main.Tpo -c -o src/snmp_wrapper-main.obj `if test -f 'src/main.c'; then $(CYGPATH_W) 'src/main.c'; else $(CYGPATH_W) '$(srcdir)/src/main.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/snmp_wrapper-main.Tpo src/$(DEPDIR)/snmp_wrapper-main.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/main.c' object='src/snmp_wrapper-main.obj' libtool=no @AMDEPBACKSLASH@
+src/packet_parser-main.obj: src/main.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(packet_parser_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT src/packet_parser-main.obj -MD -MP -MF src/$(DEPDIR)/packet_parser-main.Tpo -c -o src/packet_parser-main.obj `if test -f 'src/main.c'; then $(CYGPATH_W) 'src/main.c'; else $(CYGPATH_W) '$(srcdir)/src/main.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/packet_parser-main.Tpo src/$(DEPDIR)/packet_parser-main.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/main.c' object='src/packet_parser-main.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(snmp_wrapper_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/snmp_wrapper-main.obj `if test -f 'src/main.c'; then $(CYGPATH_W) 'src/main.c'; else $(CYGPATH_W) '$(srcdir)/src/main.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(packet_parser_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o src/packet_parser-main.obj `if test -f 'src/main.c'; then $(CYGPATH_W) 'src/main.c'; else $(CYGPATH_W) '$(srcdir)/src/main.c'; fi`
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -702,7 +702,7 @@ clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
-		-rm -f src/$(DEPDIR)/snmp_wrapper-main.Po
+		-rm -f src/$(DEPDIR)/packet_parser-main.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-hdr distclean-tags
@@ -750,7 +750,7 @@ installcheck-am:
 maintainer-clean: maintainer-clean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
 	-rm -rf $(top_srcdir)/autom4te.cache
-		-rm -f src/$(DEPDIR)/snmp_wrapper-main.Po
+		-rm -f src/$(DEPDIR)/packet_parser-main.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
